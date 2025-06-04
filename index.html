@@ -12,20 +12,25 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding-top: 30px;
+    color: blue;
   }
+
   h1 {
-    margin-top: 20px;
+    margin-bottom: 20px;
   }
+
   input[type="text"] {
     padding: 10px;
     font-size: 16px;
     width: 250px;
-    margin-top: 20px;
     border-radius: 5px;
     border: 1px solid #333;
+    color: blue;
   }
+
   button {
     padding: 10px 20px;
     font-size: 16px;
@@ -36,14 +41,16 @@
     background-color: #333;
     color: #fff;
   }
+
   #response {
     margin-top: 30px;
     padding: 20px;
-    max-width: 400px;
+    max-width: 500px;
+    width: 90%;
     text-align: center;
     background: #fff;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
   }
 </style>
 </head>
@@ -66,38 +73,106 @@ function getMeaning() {
     return;
   }
 
-  // Example name ideas
+  // Extensive list of common English names with fun/meaningful descriptions
   const nameMeanings = {
+    "Aiden": "Little fire, fiery and energetic!",
     "Alex": "Defender of the people. Bold and courageous!",
-    "Sophia": "Wisdom and elegance embody you.",
-    "John": "Graceful and merciful.",
-    "Emma": "Whole or universal.",
-    "Michael": "Who is like God? A strong leader.",
-    "Emily": "Eager and admired.",
+    "Alyssa": "Noble and rational.",
+    "Amber": "Fossilized tree resin, warm and precious.",
+    "Andrew": "Manly, brave, and strong.",
+    "Anna": "Grace, favor, and beautiful",
+    "Anthony": "Priceless or beyond praise.",
+    "Ava": "Bird or life.",
+    "Benjamin": "Son of the right hand.",
+    "Beth": "House of God, joyful.",
+    "Brian": "Strong, noble, and virtuous.",
+    "Brandon": "Beacon hill, hill covered with broom.",
+    "Cameron": "Crooked nose, gentle and noble.",
+    "Caroline": "Free man, strong.",
+    "Charles": "Free man, strong.",
+    "Charlotte": "Free man, petite.",
+    " Chloe": "Blooming, fresh and young.",
+    "Daniel": "God is my judge.",
     "David": "Beloved; friend.",
-    "Sarah": "Princess; noblewoman."
-    // Add more if desired
+    "Diana": "Divine, heavenly.",
+    "Edward": "Wealthy guardian.",
+    "Elizabeth": "God is my oath.",
+    "Emily": "Eager and admired.",
+    "Emma": "Whole or universal.",
+    "Ethan": "Strong, firm, enduring.",
+    "Evelyn": "Wished for child, beautiful bird.",
+    "Grace": "Elegant and divine",
+    "Hannah": "Grace, favor.",
+    "Harry": "Keeper of the home.",
+    "Helen": "Bright, shining one.",
+    "Isaac": "Laughter, he will rejoice.",
+    "Isabella": "Devoted to God.",
+    "Jack": "God is gracious.",
+    "James": "Supplanter, following.",
+    "Jason": "Healing, healer.",
+    "John": "Graceful and merciful.",
+    "Jonathan": "God has given.",
+    "Joseph": "He will add, increase.",
+    "Julia": "Youthful, downy.",
+    "Kate": "Pure.",
+    "Kayla": "Pure, crown of laurels.",
+    "Kevin": "Gentle, kind, handsome.",
+    "Liam": "Strong-willed warrior.",
+    "Lily": "Pure, innocent flower.",
+    "Lucas": "Light-giving.",
+    "Lucy": "Light.",
+    "Madeline": "Tower, high praise.",
+    "Matthew": "Gift of God.",
+    "Megan": "Pearl, strong.",
+    "Melissa": "Honeybee.",
+    "Michael": "Who is like God? A strong leader.",
+    "Mia": "Mine or wished-for child.",
+    "Nathan": "Gift from God.",
+    "Natalie": "Born on Christmas Day.",
+    "Nicholas": "Victory of the people.",
+    "Olivia": "Olive tree, symbol of peace.",
+    "Oliver": "Olive tree, peace maker.",
+    "Oscar": "God spear, divine spear.",
+    "Paula": "Small, humble.",
+    "Rachel": "Ewe, gentle and lamb.",
+    "Rebecca": "To tie, bind.",
+    "Richard": "Powerful leader, brave ruler.",
+    "Rose": "Famous flower, love.",
+    "Ryan": "Little king.",
+    "Samantha": "Listener, hearer.",
+    "Samuel": "Name of God, heard by God.",
+    "Sara": "Princess, noblewoman.",
+    "Sarah": "Princess; noble lady.",
+    "Sophia": "Wisdom.",
+    "Steven": "Crown, wreathed.",
+    "Victoria": "Victory, conqueror.",
+    "Victoria": "Victory.",
+    "Zachary": "The Lord has remembered."
   };
 
-  const key = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase(); // Normalize case
+  // Normalize input case: first letter uppercase, rest lowercase
+  const key = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+
   let meaning = nameMeanings[key];
 
   if (!meaning) {
-    // If name not found
-    meaning = "Hmm, I'm not sure about that name! But it sounds wonderful!";
+    // Default message for unrecognized names
+    meaning = "Hmm, I don't have information on that name, but it sounds wonderful!";
   } else {
-    // Playful compliment
+    // Add a fun compliment
     const compliments = [
       "You're truly special!",
       "That name suits you perfectly!",
       "A great choice!",
       "You have a majestic name!",
-      "That's an awesome name!"
+      "That's an awesome name!",
+      "It suits your personality!"
     ];
     const compliment = compliments[Math.floor(Math.random() * compliments.length)];
     meaning += ' ' + compliment;
   }
 
+  // Output the result
   responseDiv.innerHTML = `<strong>${name}</strong>: ${meaning}`;
 }
 </script>
